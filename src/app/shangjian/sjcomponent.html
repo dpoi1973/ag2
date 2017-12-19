@@ -1,0 +1,67 @@
+<div class="component">
+  <div>
+    <div class="public-button" style="height:33px;">
+      <div style="float:right; width:850px;">
+        <div class="col-md-2" style="display:inline; padding:0;">
+          <p class="input-group" style="color:black">
+          <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                    [(ngModel)]="dt" required></my-date-picker>
+          </p>
+        </div>
+        <div class="col-md-2" style="display:inline;  padding:0;">
+          <p class="input-group" style="color:black">
+                  <my-date-picker name="mydate2" [options]="myDatePickerOptions"
+                    [(ngModel)]="enddt" required></my-date-picker>
+          </p>
+        </div>
+        <input type="submit" class="btn btn-default btn-sm" (click)="searchby()" value="单证查询">
+        <input type="submit" class="btn btn-default btn-sm" (click)="create()" value="新建单证">
+        <input type="submit" class="btn btn-default btn-sm" disabled="disabled" (click)="copy()" value="复制单证">
+        <input type="submit" class="btn btn-default btn-sm" (click)="Delete()" value="删除单证">
+        <input type="submit" class="btn btn-default btn-sm" (click)="send()" value="发送单证">
+        <button type="button" class="btn btn-default btn-sm" (click)="isCollapsed = !isCollapsed" style="background-color:#48D1CC;color:#fff">open</button>
+      </div>
+      <div style="float:right;">
+        <input type="text" class="form-control input-search" (keyup.enter)="searchby()" [(ngModel)]="searchCondition.condition.Ent_Decl_No"
+          placeholder="内部编号" aria-describedby="basic-addon2">
+      </div>
+    </div>
+    <hr>
+    <!--<div uib-collapse="!isCollapsed" class="public-showhide">
+      <div>
+        <label>业务编号</label> <input type="text">
+        <label>经营单位</label> <input type="text">
+        <label>提运单号</label> <input type="text">
+      </div>
+      <div>
+        <label>创建日期</label> <input type="text">
+        <label>
+          到</label> <input type="text">
+        <label>客户端名称</label> <input type="text">
+      </div>
+      <div>
+        <label>创建人</label> <input type="text">
+        <label>商检状态</label> <input type="text">
+      </div>
+
+    </div>-->
+
+    <!--<div ui-grid="gridOptions" ui-grid-pagination ui-grid-selection ui-grid-exporter id="grid1" class="grid" style="height:500px"></div>
+    -->
+    <div>
+        <ag-grid-angular #agGrid 
+                    style="width: 100%; height: 500px;"
+                    class="ag-fresh"
+                    [gridOptions]="gridOptions"
+                    >
+        </ag-grid-angular>
+    </div>
+<div>
+    <button on-click="gg('onBtFirst')">首页</button>
+    <button on-click="gg('onBtLast')">上一页</button>
+    <button  on-click="gg('onBtNext')">下一页</button>
+    <button on-click="gg('onBtFinal')">末页</button>
+    页数：{{page}}/{{pagesize}}---------总条数：{{totalpagesize}}
+</div>
+  </div>
+</div>

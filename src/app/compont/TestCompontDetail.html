@@ -1,0 +1,20 @@
+<div class="full-width-panel">
+    <div class="full-width-details">
+        <div class="full-width-detail"><b>id: </b> {{parentRecord.EntryId}}</div>
+    </div>
+    <ag-grid-angular #agDetailGrid
+                 class="full-width-grid"
+                 [gridOptions]="gridOptions"
+
+                 enableSorting
+                 enableFilter
+                 enableColResize
+
+                 (mousewheel)="consumeMouseWheelOnDetailGrid($event)"
+                 (DOMMouseScroll)="consumeMouseWheelOnDetailGrid($event)">
+
+    </ag-grid-angular>
+    <div class="full-width-grid-toolbar">
+        <input class="full-width-search" #box (keyup)="onSearchTextChange(box.value)" placeholder="Search..."/>
+    </div>
+</div>

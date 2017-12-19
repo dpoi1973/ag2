@@ -1,0 +1,122 @@
+<div id="sjBox">
+    <div id="middle">
+        <div>
+            <span><b>主要单证信息</b><span class="line" style="width:92%;"></span></span>
+            <div class="section">
+                <div><label for="">报检申请号</label><input type="text" [(ngModel)]="detailInfoData.Ent_Decl_No" [ngStyle]="detailInfoData.Ent_Decl_No?color:{}"></div>
+                <div><label for="">报检号</label><input type="text" [(ngModel)]="detailInfoData.Decl_No" [ngStyle]="detailInfoData.Decl_No?color:{}"></div>
+                <div><label for="">报检类别</label><input type="text" [(ngModel)]="detailInfoData.Decl_Type_Name" [ngStyle]="detailInfoData.Decl_Type_Name?color:{}"></div>
+                <div><label for="">报检员</label><input type="text" style="width:30%" [(ngModel)]="detailInfoData.Decl_Persn_Cert_No"
+                        [ngStyle]="detailInfoData.Decl_Persn_Cert_No?color:{}"> <input type="text" style="width:30%" [(ngModel)]="detailInfoData.Decl_Person_Name"
+                        [ngStyle]="detailInfoData.Decl_Person_Name?color:{}"></div>
+                <div><label for="">报检单位</label><input type="text" [(ngModel)]="detailInfoData.Decl_Reg_No" [ngStyle]="detailInfoData.Decl_Reg_No?color:{}"></div>
+                <div><label for="">报检单位名称</label><input type="text" [(ngModel)]="detailInfoData.Decl_Reg_Name" [ngStyle]="detailInfoData.Decl_Reg_Name?color:{}"></div>
+                <div><label for="">收货人注册号</label><input type="text" [(ngModel)]="detailInfoData.Consignee_Code" [ngStyle]="detailInfoData.Consignee_Code?color:{}"></div>
+                <div><label for="">收货人名称</label><input type="text" [(ngModel)]="detailInfoData.Consignee_Cname" [ngStyle]="detailInfoData.Consignee_Cname?color:{}"></div>
+                <div><label for="">发货人名称(英文)</label><input type="text" [(ngModel)]="detailInfoData.Consignee_Ename" [ngStyle]="detailInfoData.Consignee_Ename?color:{}"></div>
+                <div><label for="">发货地址</label><input type="text" [(ngModel)]="detailInfoData.Consignor_Addr" [ngStyle]="detailInfoData.Consignor_Addr?color:{}"></div>
+                <div style="width:41%; text-align:left; padding-left:48px"><label for="">企业资质</label><input type="text" style="width:100px"> <input type="text" style="width:100px"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <span><b>货物信息</b><span [ngClass]="pointDirection" id="point" (click)="showOrHide()"></span>
+            <span class="line"></span>记录数:<span id="current-num">{{currentNum}}</span> / <span style="display:inline-block; width:8px;">{{totalNum}}</span>&#x3000;&#x3000;<button style="padding:1px 2px;" [disabled]="leftBoolean" [ngStyle]="useStyleLeft" (click)="showFirst()"><<</button> <button [disabled]="leftBoolean" (click)="previous()" [ngStyle]="useStyleLeft"><</button> <button (click)="next()" [disabled]="rightBoolean" [ngStyle]="useStyleRight">></button> <button style="padding:1px 2px;" [disabled]="rightBoolean" [ngStyle]="useStyleRight" (click)="showFinal()">>></button> <button>添加</button> <button>插入</button> <button>复制</button> <button>删除</button> <button>货箱对应</button></span>
+            <div class="section">
+                <div><label for="">HS编码</label><input type="text" [ngStyle]="currentGoodsDetail.Prod_Hs_Code?color:{}" [(ngModel)]="currentGoodsDetail.Prod_Hs_Code"></div>
+                <div><label for="">货物名称</label><input type="text" [ngStyle]="currentGoodsDetail.Decl_Goods_Cname?color:{}" [(ngModel)]="currentGoodsDetail.Decl_Goods_Cname"></div>
+                <div><label for="">CIQ编码</label><input type="text" [ngStyle]="currentGoodsDetail.Ciq_Code?color:{}" [(ngModel)]="currentGoodsDetail.Ciq_Code"></div>
+                <div><label for="">货物属性</label><input type="text" [ngStyle]="currentGoodsDetail.Goods_Attr_Name?color:{}" [(ngModel)]="currentGoodsDetail.Goods_Attr_Name"></div>
+                <div><label for="">数量</label><input type="text" style="width:83px" [(ngModel)]="currentGoodsDetail.Qty" [ngStyle]="currentGoodsDetail.Qty?color:{}">&nbsp;<input type="text" style="width:83px;"
+                        [(ngModel)]="currentGoodsDetail.shuliang" [ngStyle]="currentGoodsDetail.Qty?color:{}"></div>
+                <div><label for="">重量</label><input type="text" style="width:83px" [ngStyle]="currentGoodsDetail.Weight?color:{}" [(ngModel)]="currentGoodsDetail.Weight">&nbsp;<input type="text"
+                        [(ngModel)]="currentGoodsDetail.zhongliang" style="width:83px" [ngStyle]="currentGoodsDetail.Weight?color:{}" disabled></div>
+                <div><label for="">单价</label><input type="text" [(ngModel)]="currentGoodsDetail.Price_Per_Unit" [ngStyle]="currentGoodsDetail.Price_Per_Unit?color:{}"></div>
+                <div><label for="">货物总值</label><input type="text" style="width:83px" [ngStyle]="currentGoodsDetail.Goods_Total_Val?color:{}" [(ngModel)]="currentGoodsDetail.Goods_Total_Val">&nbsp;<input type="text"
+                        [(ngModel)]="currentGoodsDetail.huowuzongzhi" style="width:83px" [ngStyle]="currentGoodsDetail.Goods_Total_Val?color:{}" disabled></div>
+                <div><label for="">包装件数</label><input type="text" [ngStyle]="1==2?color:{}"></div>
+                <div><label for="">包装种类</label><input type="text" [ngStyle]="1==2?color:{}"></div>
+                <div><label for="">用途</label><input type="text" [ngStyle]="currentGoodsDetail.Purpose_Name?color:{}" [(ngModel)]="currentGoodsDetail.yongtu"></div>
+                <div><label for="">标准量</label><input type="text" [ngStyle]="currentGoodsDetail.Std_Weight?color:{}" style="width:83px" [(ngModel)]="currentGoodsDetail.Std_Weight">&nbsp;<input type="text" [ngStyle]="currentGoodsDetail.Std_Weight?color:{}" [(ngModel)]="currentGoodsDetail.biaozhunliang" style="width:83px"
+                        ></div>
+                <div><label for="">原产国</label><input type="text" [ngStyle]="currentGoodsDetail.Ori_Ctry_Name?color:{}" [(ngModel)]="currentGoodsDetail.yuanchanguo"></div>
+                <div><label for="">原产地区</label><input type="text" [(ngModel)]="currentGoodsDetail.Orig_Place_Name" [ngStyle]="currentGoodsDetail.Orig_Place_Name?color:{}"></div>
+                <div><label for="">生产批号</label><input type="text" [(ngModel)]="currentGoodsDetail.Prod_Batch_No" [ngStyle]="currentGoodsDetail.Prod_Batch_No?color:{}"></div>
+                <div><label for="" style="color:#f0f5fa">a</label><button>&#x3000;危险货物信息&#x3000;</button>&#x3000;<button>&#x3000;备用信息&#x3000;</button></div>
+                <section id="show-hide" [ngStyle]="display">
+                    <div style="height:25px"><label for="" style="display:inline-block; height:30px; position:relative; top:-8px">境外生产<br>企业名称</label>
+                        <input type="text" style="vertical-align:top"></div>
+                    <div><label for="">货物规格</label><input type="text" [(ngModel)]="currentGoodsDetail.Goods_Spec" [ngStyle]="currentGoodsDetail.Goods_Spec?color:{}"></div>
+                    <div><label for="">货物型号</label><input type="text" [(ngModel)]="currentGoodsDetail.Goods_Model" [ngStyle]="currentGoodsDetail.Goods_Model?color:{}"></div>
+                    <div><label for="">货物品牌</label><input type="text" [(ngModel)]="currentGoodsDetail.Goods_Brand" [ngStyle]="currentGoodsDetail.Goods_Brand?color:{}"></div>
+                    <div><label for="">生产日期</label><input type="text" [(ngModel)]="currentGoodsDetail.Produce_Date" [ngStyle]="currentGoodsDetail.Produce_Date?color:{}"></div>
+                    <div><label for="">产品有效期</label><input type="text" [(ngModel)]="currentGoodsDetail.Prod_Valid_Dt" [ngStyle]="currentGoodsDetail.Prod_Valid_Dt?color:{}"></div>
+                    <div><label for="">产品保质期</label><input type="text"></div>
+                    <div><label for="">成分/原料</label><input type="text" [(ngModel)]="currentGoodsDetail.Stuff" [ngStyle]="currentGoodsDetail.Stuff?color:{}"></div>
+                </section>
+                <div style="width:41%; padding-right:1px;"><label for="">产品资质</label><input type="text">&nbsp;<input type="text"></div>
+                <div style="width:11%;"><label for="">核销序号</label><input type="text" style="width:60px"></div>
+                <div style="width:13%;"><label for="">核销数量</label><input type="text" style="width:60px" [(ngModel)]="currentGoodsDetail.Qty" [ngStyle]="currentGoodsDetail.Qty?color:{}"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <span><b>运输及合同信息</b><span class="line" style="width:91%;"></span></span>
+            <div class="section">
+                <div><label for="">运输方式</label><input type="text" [ngStyle]="detailInfoData.Trans_Mode_Name?color:{}" [(ngModel)]="detailInfoData.Trans_Mode_Name"></div>
+                <div><label for="">运输工具</label><input type="text"></div>
+                <div><label for="">号码</label><input type="text"></div>
+                <div><label for="">合同号</label><input type="text" [ngStyle]="detailInfoData.Contract_No?color:{}" [(ngModel)]="detailInfoData.Contract_No"></div>
+                <div><label for="">提货单号</label><input type="text"></div>
+                <div><label for="">提/运单号</label><input type="text" [ngStyle]="detailInfoData.Bill_Lad_No?color:{}" [(ngModel)]="detailInfoData.Bill_Lad_No"></div>
+                <div><label for="">分运单号</label><input type="text"></div>
+                <div><label for="">标记号码</label><input type="text" [ngStyle]="detailInfoData.Mark_No?color:{}" [(ngModel)]="detailInfoData.Mark_No"></div>
+                <div><label for="">贸易方式</label><input type="text" [ngStyle]="detailInfoData.Trade_Mode_Name?color:{}" [(ngModel)]="detailInfoData.maoyifangshi"></div>
+                <div><label for="">贸易国别</label><input type="text" [ngStyle]="detailInfoData.Trade_Country_Name?color:{}" [(ngModel)]="detailInfoData.maoyiguobie"></div>
+                <div><label for="">到货日期</label><input type="text"></div>
+                <div><label for="">卸毕日期</label><input type="text"></div>
+                <div style="width:50%"><label for="">所需单证</label><input type="text" style="width:445px"></div>
+                <div style="width:50%"><label for="">特殊要求</label><input type="text" style="width:445px"></div>
+                <div style="width:50%"><label for="">随附单据</label><input type="text" style="width:445px" [ngStyle]="detailInfoData.Atta_Collect_Name?color:{}" [(ngModel)]="detailInfoData.Atta_Collect_Name"></div>
+                <div style="width:13%"><input type="checkbox">原箱装载标识</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <span><b>集装箱信息</b><span class="line" style="width:93%;"></span></span>
+            <div class="section">
+                <div><label for="">集装箱规格</label><input type="text"></div>
+                <div><label for="">集装箱数量</label><input type="text"></div>
+                <div><label for="">集装箱号码</label><input type="text"></div>
+                <div style="width:8%"><input type="checkbox">拼箱标记</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div>
+            <span><b>其它单证信息</b><span class="line" style="width:92%;"></span></span>
+            <div class="section">
+                <div><label for="">报检地</label><input type="text" [ngStyle]="detailInfoData.Insp_Org_Name?color:{}" [(ngModel)]="detailInfoData.baojiandi"></div>
+                <div><label for="">口岸机构</label><input type="text" [ngStyle]="detailInfoData.Org_Name?color:{}" [(ngModel)]="detailInfoData.kouanjigou"></div>
+                <div><label for="">目的机构</label><input type="text" [ngStyle]="detailInfoData.Purp_Org_Name?color:{}" [(ngModel)]="detailInfoData.mudijigou"></div>
+                <div><label for="">领证地</label><input type="text" [ngStyle]="detailInfoData.Vsa_Org_Name?color:{}" [(ngModel)]="detailInfoData.lingzhengdi"></div>
+                <div><label for="">报检日期</label><input type="text" [ngStyle]="detailInfoData.Gds_Arvl_Date?color:{}" [(ngModel)]="detailInfoData.Gds_Arvl_Date"></div>
+                <div><label for="">启运国家</label><input type="text" [ngStyle]="detailInfoData.Desp_Ctry_Name?color:{}" [(ngModel)]="detailInfoData.qiyunguojia"></div>
+                <div><label for="">启运口岸</label><input type="text" [ngStyle]="detailInfoData.Desp_Port_Name?color:{}" [(ngModel)]="detailInfoData.qiyunkouan"></div>
+                <div><label for="">启运日期</label><input type="text" [ngStyle]="detailInfoData.Desp_Date?color:{}" [(ngModel)]="detailInfoData.Desp_Date"></div>
+                <div><label for="">经停口岸</label><input type="text" [(ngModel)]="detailInfoData.Port_Stop_Name" [ngStyle]="detailInfoData.Port_Stop_Name?color:{}"></div>
+                <div><label for="">入境口岸</label><input type="text" [ngStyle]="detailInfoData.Enty_Port_Name?color:{}" [(ngModel)]="detailInfoData.Enty_Port_Name"></div>
+                <div><label for="">入境目的地</label><input type="text" [ngStyle]="detailInfoData.Dest_Name?color:{}" [(ngModel)]="detailInfoData.rujingmudidi"></div>
+                <div><label for="">存放地点</label><input type="text" [ngStyle]="detailInfoData.Goods_Place?color:{}" [(ngModel)]="detailInfoData.Goods_Place"></div>
+                <div><label for="">报关海关</label><input type="text" [ngStyle]="detailInfoData.Decl_Custm_Name?color:{}" [(ngModel)]="detailInfoData.baoguanhaiguan"></div>
+                <div><label for="">特种业务标识</label><input type="text" [(ngModel)]="detailInfoData.Spec_Decl_Flag" [ngStyle]="detailInfoData.Spec_Decl_Spec_Decl_Flag?color:{}"></div>
+                <div><label for="">关联理由</label><input type="text" [(ngModel)]="detailInfoData.Correlation_Reason_Content" [ngStyle]="detailInfoData.Correlation_Reason_Content?color:{}"></div>
+                <div><label for="">海关注册号</label><input type="text" [(ngModel)]="detailInfoData.Custm_Reg_No" [ngStyle]="detailInfoData.Custm_Reg_No?color:{}"></div>
+                <div><label for="">索赔截止日期</label><input type="text" [(ngModel)]="detailInfoData.Counter_Claim" [ngStyle]="detailInfoData.Counter_Claim?color:{}"></div>
+                <div style="width:35%"><label for="">特殊通关模式</label><input type="text" style="width:280px;"></div>
+                <div style="width:15%;text-align:left;"><label for=""></label><input type="submit" value="使用人"></div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-default btn-sm" (click)="inid==0?create():update()" value="保存">
+</div>

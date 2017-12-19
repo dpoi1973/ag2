@@ -1,0 +1,119 @@
+body {
+  background-color: lightgrey;
+}
+
+.full-width-panel {
+    position: relative;
+    background: #fafafa;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border-left: 2px solid grey;
+    border-bottom: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+}
+
+.call-record-cell {
+    text-align: right;
+}
+
+.full-width-detail {
+    padding-top: 4px;
+}
+
+.full-width-details {
+    float: left;
+    padding: 5px;
+    margin: 5px;
+    width: 150px;
+}
+
+.full-width-grid {
+    margin-left: 150px;
+    padding-top: 25px;
+    box-sizing: border-box;
+    display: block;
+    height: 100%;
+}
+
+.full-width-grid-toolbar {
+    top: 4px;
+    left: 30px;
+    margin-left: 150px;
+    display: block;
+    position: absolute;
+}
+
+.full-width-phone-icon {
+    padding-right: 10px;
+}
+
+.full-width-search {
+    border: 1px solid #eee;
+    margin-left: 10px;
+}
+
+
+#sjBox{
+    background-color: #f0f5fa;
+}
+.line{
+    display: inline-block;
+    border-top: 1px solid #c8d2dc;
+    width: 48%;
+    position: relative;
+    bottom: 5px;
+}
+#middle{
+    width: 1100px;
+    margin: 0 auto;
+}
+#clear{
+    clear: both;
+}
+#sjBox label{
+    font-weight: normal;
+}
+/*#sjBox input{
+    ime-mode: disabled
+}*/
+
+.section>div,#show-hide>div{
+    float: left;
+    width: 25%;
+    text-align: right;
+    margin: 5px 0;
+}
+.section>div>input,#show-hide>div>input{
+    /*border: 1px solid black;*/
+    border-radius: 0;
+}
+.section>div>label{
+    margin-right: 5px;
+}
+#show-hide>div>input{
+    margin-left: 5px;
+}
+#point{
+    font-size: 3px !important;
+    border: 1px solid gray;
+    border-radius: 50%;
+    color:gray;
+    background-color: #fcfcfc;
+}
+#current-num{
+    background-color: white;
+    border: 1px solid black;
+    display: inline-block;
+    width: 48px;
+    text-align: center;
+}
+
+.component{
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-right: auto;
+  margin-left: auto;
+  box-sizing: content-box;
+}
